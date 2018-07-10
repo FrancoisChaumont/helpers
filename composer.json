@@ -1,0 +1,19 @@
+{
+    "name": "francoischaumont/helpers",
+    "description": "Various helper functions gathered under helper classes for convenience of use and access",
+    "authors": [
+        {
+            "name": "Francois Chaumont",
+            "email": "funcois@outlook.com",
+            "role": "developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "FC\\": "src/"
+        }
+    }
+}
