@@ -64,7 +64,7 @@ class StringHelper
      */
     public static function noSpace(string $s) 
     {
-        return preg_replace('/\s+/', '', trim(singleSpaceOnly($s)));
+        return preg_replace('/\s+/', '', trim(static::singleSpaceOnly($s)));
     }
 
     /**
