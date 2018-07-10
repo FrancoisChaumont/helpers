@@ -1,6 +1,6 @@
 <?php
 
-namespace FC;
+namespace FC\Helpers;
 
 /**
  * Helper class to hold helper functions/methods for array management

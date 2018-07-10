@@ -7,9 +7,9 @@ $array = [
     "Bonjour" => "le Monde"
 ];
 
-\FC\DebugHelper::var_export($array);
+\FC\Helpers\DebugHelper::var_export($array);
 
-$r = \FC\DebugHelper::var_dump_to_var($array);
+$r = \FC\Helpers\DebugHelper::var_dump_to_var($array);
 echo $r;
 
 
