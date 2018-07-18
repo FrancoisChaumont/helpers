@@ -78,9 +78,16 @@ class StringHelper
         return bin2hex(random_bytes($length));
     }
 
-    public static function findWord(string $haystack, string $needle): bool
+    /**
+     * Find a specific word inside a given text
+     *
+     * @param string $text the string to search inside
+     * @param string $word the word to look for
+     * @return boolean true if found, false otherwise
+     */
+    public static function findWord(string $text, string $word): bool
     {
-        return preg_match('/\b'.$needle.'\b/', $haystack);
+        return preg_match('/\b'.$word.'\b/', $text);
     }
 }
 
