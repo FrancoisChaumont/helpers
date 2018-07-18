@@ -73,9 +73,14 @@ class StringHelper
      * @param string $length
      * @return string
      */
-    function randomHexaDecimal(string $length): string
+    public static function randomHexaDecimal(string $length): string
     {
         return bin2hex(random_bytes($length));
+    }
+
+    public static function findWord(string $haystack, string $needle): bool
+    {
+        return preg_match('/\b'.$needle.'\b/', $haystack);
     }
 }
 
