@@ -89,5 +89,24 @@ class StringHelper
     {
         return preg_match('/\b'.$word.'\b/', $text);
     }
+
+    /**
+     * Find a specific word inside a given text using an array of words.
+     * Stop when found.
+     *
+     * @param string $text the string to search inside
+     * @param array $words the words to look for
+     * @return void true if found, false otherwise
+     */
+    public static function findWordFromArray(string $text, array $words): bool
+    {
+        $found = false;
+        foreach($words as $word) {
+            $found = static::findWord($text, $word);
+            if ($found) { break; }
+        }
+
+        return $found;
+    }
 }
 
