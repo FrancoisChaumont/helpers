@@ -1,4 +1,4 @@
-# XML - read and parse XML files
+# HELPERS - Various helper functions
 
 ![GitHub release](https://img.shields.io/github/release/FrancoisChaumont/helpers.svg)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/FrancoisChaumont/helpers/issues)
