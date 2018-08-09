@@ -8,7 +8,7 @@ namespace FC\Helpers;
 class FileHelper
 {
     /**
-     * Download a picture from a source (URL or others)
+     * Download a file from a source (URL or others)
      *
      * @param string $source source file name
      * @param string $destination destination file name
@@ -31,6 +31,7 @@ class FileHelper
 
     /**
      * Expands the home directory alias '~' to the full path
+     *
      * @param string $path the path to expand
      * @return string the expanded path
      */
@@ -43,6 +44,27 @@ class FileHelper
         }
         
         return str_replace('~', realpath($homeDirectory), $path);
+    }
+    
+    /**
+     * Empty a folder and delete it
+     *
+     * @param string $folder path to folder
+     * @return void
+     */
+    function deleteFolder(string $folder)
+    {
+        $files = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($folder, RecursiveDirectoryIterator::SKIP_DOTS),
+            RecursiveIteratorIterator::CHILD_FIRST
+        );
+
+        foreach ($files as $fileinfo) {
+            $todo = ($fileinfo->isDir() ? 'rmdir' : 'unlink');
+            $todo($fileinfo->getRealPath());
+        }
+
+        rmdir($folder);
     }
 }
 
