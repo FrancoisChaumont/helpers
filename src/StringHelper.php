@@ -116,7 +116,7 @@ class StringHelper
      * @param string $command command line to prepare
      * @return string prepared command line
      */
-    function prepareCommand(string $command): string
+    public static function prepareCommand(string $command): string
     {
         return "export LC_ALL=C;" . $command;
     }
