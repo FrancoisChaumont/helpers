@@ -108,5 +108,17 @@ class StringHelper
 
         return $found;
     }
+    
+    /**
+     * Prepare bash command to make sure it gets the expected result
+     * Useful for 'sort' commands for example
+     *
+     * @param string $command command line to prepare
+     * @return string prepared command line
+     */
+    function prepareCommand(string $command): string
+    {
+        return "export LC_ALL=C;" . $command;
+    }
 }
 
