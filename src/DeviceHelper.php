@@ -12,7 +12,7 @@ class DeviceHelper
      *
      * @return integer
      */
-    function getProcessorCoresNumber(): int
+    public static function getProcessorCoresNumber(): int
     {
         $command = "cat /proc/cpuinfo | grep processor | wc -l";
 
