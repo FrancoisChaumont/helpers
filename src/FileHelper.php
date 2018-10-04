@@ -35,7 +35,7 @@ class FileHelper
      * @param string $path the path to expand
      * @return string the expanded path
      */
-    function expandHomeDirectory(string $path): string
+    public static function expandHomeDirectory(string $path): string
     {
         $homeDirectory = getenv('HOME');
 
@@ -52,7 +52,7 @@ class FileHelper
      * @param string $folder path to folder
      * @return void
      */
-    function deleteFolder(string $folder)
+    public static function deleteFolder(string $folder)
     {
         $files = new RecursiveIteratorIterator(
             new RecursiveDirectoryIterator($folder, RecursiveDirectoryIterator::SKIP_DOTS),
@@ -65,6 +65,20 @@ class FileHelper
         }
 
         rmdir($folder);
+    }
+    
+    /**
+     * Format a file size from bytes to human readable b, Mb, Gb, Tb, Pb
+     *
+     * @param int|string $bytes file size in bytes
+     * @param integer $decimals number of decimals to display
+     * @return string human readable file size
+     */
+    public static function fileSizeReadable($bytes, int $decimals = 2): string
+    {
+        $sz = 'BKMGTP';
+        $factor = floor((strlen($bytes) - 1) / 3);
+        return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . ' ' . @$sz[$factor];
     }
 }
 

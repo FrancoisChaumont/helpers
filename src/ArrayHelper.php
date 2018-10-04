@@ -27,5 +27,22 @@ class ArrayHelper
 
         return $array;
     }
+    
+    /**
+     * array_map function for associative arrays
+     *
+     * @param callable $callback function to execute using key and value
+     * @param array $array array to map
+     * @return array
+     */
+    function array_map_assoc(callable $callback, array $array): array
+    {
+        $r = array();
+        foreach ($array as $key=>$value) {
+            $r[$key] = $callback($key,$value);
+        }
+
+        return $r;
+    }
 }
 
