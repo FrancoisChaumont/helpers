@@ -41,7 +41,8 @@ All functions are static method callable from the following helper classes:
 * JsonHelper
 * StatsHelper
 * StringHelper
-
+* TimeHelper
+* ValidationHelper
 
 ## Built with
 * Visual Studio Code
