@@ -17,7 +17,7 @@ class StatsHelper
      */
     public static function percentage(int $count, int $total, int $precision = 2): string
     {
-        return number_format(round(($count / $total) * 100, $precision), $precision);
+        return number_format(round(($count / ($total <= 0 ? 1 : $total)) * 100, $precision), $precision);
     }
 }
 

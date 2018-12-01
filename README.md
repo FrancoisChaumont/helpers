@@ -36,9 +36,13 @@ Under the folder named *tests* you will find a test script ready to use and to e
 All functions are static method callable from the following helper classes:
 * ArrayHelper
 * DebugHelper
+* DeviceHelper
 * FileHelper
 * JsonHelper
+* StatsHelper
 * StringHelper
+* TimeHelper
+* ValidationHelper
 
 ## Built with
 * Visual Studio Code
