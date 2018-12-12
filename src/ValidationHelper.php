@@ -106,6 +106,8 @@ class ValidationHelper
 
     /**
      * Verify if an app ID is Android's
+     *      - Android app lookup: https://play.google.com/store/apps/details?id=xxx
+     *      - Android app ID documentation: https://developer.android.com/studio/build/application-id
      *
      * @param string $androidAppId app ID
      * @return boolean true if Android's
@@ -123,6 +125,8 @@ class ValidationHelper
 
     /**
      * Verify if an app ID is iOS' (iTunes app ID)
+     *      - iTunes lookup: https://itunes.apple.com/lookup?id=xxx&media=software
+     *      - iTunes lookup documentation: https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#lookup
      *
      * @param string $iOsAppId app ID
      * @return boolean true if iOS'

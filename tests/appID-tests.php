@@ -1,5 +1,11 @@
 <?php 
 
+// NOTE: 
+    // - iTunes lookup: https://itunes.apple.com/lookup?id=xxx&media=software
+    // - iTunes lookup documentation: https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#lookup
+    // - Android app lookup: https://play.google.com/store/apps/details?id=xxx
+    // - Android app ID documentation: https://developer.android.com/studio/build/application-id
+    
 use FC\Helpers\ValidationHelper;
 
 require __DIR__ . "/../vendor/autoload.php";
