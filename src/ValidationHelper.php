@@ -103,5 +103,50 @@ class ValidationHelper
             }
         }
     }
+
+    /**
+     * Verify if an app ID is Android's
+     *
+     * @param string $androidAppId app ID
+     * @return boolean true if Android's
+     */
+    public static function isAndroidAppId(string $androidAppId)
+    {
+        $regex = '/^[a-z][a-z0-9_]*(\.[a-z][a-z0-9_]*)+$/i';
+
+        if (preg_match($regex, $androidAppId)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Verify if an app ID is iOS' (iTunes app ID)
+     *
+     * @param string $iOsAppId app ID
+     * @return boolean true if iOS'
+     */
+    public static function isIosAppId(string $iOsAppId)
+    {
+        $regex = '/^[0-9]{1,19}$/';
+
+        if (preg_match($regex, $iOsAppId)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Verify if an app ID is Android's or iOS' (iTunes app ID)
+     *
+     * @param string $appId app ID
+     * @return boolean true if Android's or iOS'
+     */
+    public static function isAndroidOrIosAppId(string $appId)
+    {
+        return (self::isAndroidAppId($appId) || self::isIosAppId($appId));
+    }
 }
 

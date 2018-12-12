@@ -18,16 +18,5 @@ TimeHelper::$seconds = "secondes";
 $format = TimeHelper::TIME_IN_MINUTES;
 echo TimeHelper::secondsToTime(87, $format) . PHP_EOL;
 
-echo PHP_EOL;
-
-$array = [ 
-    "Hello" => "World",
-    "Bonjour" => "le Monde"
-];
-\FC\Helpers\DebugHelper::var_export($array);
-
-echo PHP_EOL;
-
-$r = \FC\Helpers\DebugHelper::var_dump_to_var($array);
-echo $r;
+echo "\nDone.\n";
 
