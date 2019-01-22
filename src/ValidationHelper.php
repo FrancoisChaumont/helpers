@@ -152,5 +152,40 @@ class ValidationHelper
     {
         return (self::isAndroidAppId($appId) || self::isIosAppId($appId));
     }
+
+    /**
+     * Date&Time validator for all formats
+     * 
+     * Format list available here:
+     * http://php.net/manual/en/function.date.php
+     * http://php.net/manual/en/class.datetimeinterface.php#datetime.constants.types
+     * http://php.net/manual/en/datetime.createfromformat.php
+     * 
+     * Usage:
+     * validateDate('2012-02-28 12:12:12'); # true
+     * validateDate('2012-02-28', 'Y-m-d'); # true
+     * validateDate('28/02/2012', 'd/m/Y'); # true
+     * validateDate('30/02/2012', 'd/m/Y'); # false
+     * validateDate('14:50', 'H:i'); # true
+     * validateDate('14:77', 'H:i'); # false
+     * validateDate(14, 'H'); # true
+     * validateDate('14', 'H'); # true
+     * validateDate('2012-02-28T12:12:12+02:00', 'Y-m-d\TH:i:sP'); # true
+     * validateDate('2012-02-28T12:12:12+02:00', DateTime::ATOM); # true
+     * validateDate('Tue, 28 Feb 2012 12:12:12 +0200', 'D, d M Y H:i:s O'); # true
+     * validateDate('Tue, 28 Feb 2012 12:12:12 +0200', DateTime::RSS); # true
+     * validateDate('Tue, 27 Feb 2012 12:12:12 +0200', DateTime::RSS); # false
+     * ...
+     *
+     * @param mixed $datetime date&time, date, time (full or partial), can be integer or string
+     * @param string $format date/time format
+     * @return void
+     */
+    public static function validateDateTime(mixed $datetime, string $format = 'Y-m-d H:i:s')
+    {
+        $d = DateTime::createFromFormat($format, $datetime);
+        
+        return $d && $d->format($format) == $datetime;
+    }
 }
 
