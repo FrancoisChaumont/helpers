@@ -158,7 +158,7 @@ class ValidationHelper
      *
      * @param $datetime date&time, date, time (full or partial), can be integer or string
      * @param string $format date/time format
-     * @return void true if validated, false otherwise
+     * @return bool true if validated, false otherwise
      */
     public static function validateDateTime($datetime, string $format = 'Y-m-d H:i:s'): bool
     {
