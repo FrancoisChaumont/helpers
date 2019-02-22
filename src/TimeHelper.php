@@ -32,7 +32,7 @@ class TimeHelper
      * @param string $format constant from the TimeHelper class
      * @return string
      */
-    public static function secondsToTime(int $seconds, string $format=self::TIME_IN_HOURS_SHORT): string
+    public static function secondsToTime(int $seconds, int $format=self::TIME_IN_HOURS_SHORT): string
     {
         $dtF = new \DateTime('@0');
         $dtT = new \DateTime("@$seconds");

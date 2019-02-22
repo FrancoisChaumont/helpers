@@ -8,7 +8,7 @@ namespace FC\Helpers;
 class DebugHelper
 {
     /**
-     * Display a readable var_dump
+     * Display a readable var_dump in browser
      *
      * @return void
      */
@@ -43,7 +43,7 @@ class DebugHelper
     }
 
     /**
-     * Display a readable var_dump
+     * Display a readable var_dump in browser
      *
      * @return void
      */
@@ -65,7 +65,7 @@ class DebugHelper
     }
 
     /**
-     * Display a readable print_r
+     * Display a readable print_r in browser
      *
      * @return void
      */
@@ -77,7 +77,7 @@ class DebugHelper
     }
 
     /**
-     * Preserve the formatting of an echoed string
+     * Preserve the formatting of an echoed string in browser
      *
      * @return void
      */

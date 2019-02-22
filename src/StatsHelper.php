@@ -13,7 +13,7 @@ class StatsHelper
      * @param integer $count count (???%)
      * @param integer $total total (100%)
      * @param integer $precision decimal to display (**.??%)
-     * @return string percentage
+     * @return string formatted percentage based on precision and adding thousand separator
      */
     public static function percentage(int $count, int $total, int $precision = 2): string
     {
