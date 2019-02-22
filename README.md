@@ -30,7 +30,7 @@ composer require francoischaumont/helpers
 ```
 
 ## Testing
-Under the folder named *tests* you will find a test script ready to use and to experiment with. Works in web browser or CLI.
+Under the folder named *tests* you will find tests scripts ready to use and to experiment with
 
 ## Usage
 All functions are static method callable from the following helper classes:
