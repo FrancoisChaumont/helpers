@@ -7,6 +7,11 @@ namespace FC\Helpers;
  */
 class ValidationHelper
 {
+    // IP
+    const IP_ALL = "all";
+    const IP_V4 = "ipv4";
+    const IP_V6 = "ipv6";
+
     /**
      * Verify if an email address is well formatted
      *
@@ -33,74 +38,30 @@ class ValidationHelper
      * Verify if an ipv4 or ipv6 address is well formatted
      *
      * @param string $ip ipv4 or ipv6 address
+     * @param string $ipType type of ip address: ipv4, ipv6 or either (use one of those class constants: IP_V4, IP_V6 or IP_ALL)
      * @param boolean $discardPrivateRange discard private ip range
      * @param boolean $discardReservedRange discard reserved ip range
      * @return boolean true for correct format
      */
-    public static function checkIpFormat(string $ip, $discardPrivateRange=false, $discardReservedRange=false): bool
+    public static function checkIpFormat(string $ip, string $ipType = self::IP_ALL, bool $discardPrivateRange = false, bool $discardReservedRange = false): bool
     {
-        if ($discardPrivateRange) {
-            if ($discardReservedRange) {
-                return filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE, FILTER_FLAG_NO_RES_RANGE);
-            } else {
-                return filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_RES_RANGE);
-            }
-        } else {
-            if ($discardReservedRange) {
-                return filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_RES_RANGE);
-            } else {
-                return filter_var($ip, FILTER_VALIDATE_IP);
-            }
+        if ($ipType != self::IP_ALL && $ipType != self::IP_V4 && $ipType != self::IP_V6) {
+            throw new \Exception("Paramater <ipType> must be one of the following: ValidationHelper::IP_ALL, ValidationHelper::IP_V4, ValidationHelper::IP_V6. <$ipType> given instead.");
         }
-    }
 
-    /**
-     * Verify if an ipv4 address is well formatted
-     *
-     * @param string $ip ipv4 address
-     * @param boolean $discardPrivateRange discard private ip range
-     * @param boolean $discardReservedRange discard reserved ip range
-     * @return boolean true for correct format
-     */
-    public static function checkIpV4Format(string $ip, $discardPrivateRange=false, $discardReservedRange=false): bool
-    {
-        if ($discardPrivateRange) {
-            if ($discardReservedRange) {
-                return filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4, FILTER_FLAG_NO_PRIV_RANGE, FILTER_FLAG_NO_RES_RANGE);
-            } else {
-                return filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4, FILTER_FLAG_NO_RES_RANGE);
-            }
-        } else {
-            if ($discardReservedRange) {
-                return filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4, FILTER_FLAG_NO_RES_RANGE);
-            } else {
-                return filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
-            }
-        }
-    }
+        $flags = 0;
 
-    /**
-     * Verify if an ipv6 address is well formatted
-     *
-     * @param string $ip ipv6 address
-     * @param boolean $discardPrivateRange discard private ip range
-     * @param boolean $discardReservedRange discard reserved ip range
-     * @return boolean true for correct format
-     */
-    public static function checkIpV6Format(string $ip, $discardPrivateRange=false, $discardReservedRange=false): bool
-    {
-        if ($discardPrivateRange) {
-            if ($discardReservedRange) {
-                return filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6, FILTER_FLAG_NO_PRIV_RANGE, FILTER_FLAG_NO_RES_RANGE);
-            } else {
-                return filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6, FILTER_FLAG_NO_RES_RANGE);
-            }
+        // init ip type flags
+        if ($ipType == self::IP_V4) { $flags = $flags | FILTER_FLAG_IPV4; } 
+        elseif ($ipType == self::IP_V6) { $flags = $flags | FILTER_FLAG_IPV6; }
+        // init ip range flags
+        if ($discardPrivateRange) { $flags = $flags | FILTER_FLAG_NO_PRIV_RANGE; }
+        if ($discardReservedRange) { $flags = $flags | FILTER_FLAG_NO_RES_RANGE; }
+
+        if ($flags != 0) {
+            return filter_var($ip, FILTER_VALIDATE_IP, $flags);
         } else {
-            if ($discardReservedRange) {
-                return filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6, FILTER_FLAG_NO_RES_RANGE);
-            } else {
-                return filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6);
-            }
+            return filter_var($ip, FILTER_VALIDATE_IP);
         }
     }
 
@@ -140,17 +101,6 @@ class ValidationHelper
         } else {
             return false;
         }
-    }
-
-    /**
-     * Verify if an app ID is Android's or iOS' (iTunes app ID)
-     *
-     * @param string $appId app ID
-     * @return boolean true if Android's or iOS'
-     */
-    public static function isAndroidOrIosAppId(string $appId)
-    {
-        return (self::isAndroidAppId($appId) || self::isIosAppId($appId));
     }
 
     /**
