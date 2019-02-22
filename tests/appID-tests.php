@@ -74,16 +74,5 @@ foreach ($ids as $appId) {
     }
 }
 
-echo PHP_EOL;
-echo "Check Android or iOS app IDs:\n";
-
-foreach ($ids as $appId) {
-    if (ValidationHelper::isAndroidOrIosAppId($appId)) {
-        echo '✔' . "\t" . $appId . PHP_EOL;
-    } else {
-        echo '✘' . "\t" . $appId . PHP_EOL;
-    }
-}
-
 echo "\nDone.\n";
 
