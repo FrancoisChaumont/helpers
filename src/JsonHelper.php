@@ -18,7 +18,7 @@ class JsonHelper
         try {
             json_decode(file_get_contents($file));
             return (json_last_error() == JSON_ERROR_NONE);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             return false;
         }
     }

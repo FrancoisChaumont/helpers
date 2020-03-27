@@ -54,9 +54,9 @@ class FileHelper
      */
     public static function deleteFolder(string $folder)
     {
-        $files = new RecursiveIteratorIterator(
-            new RecursiveDirectoryIterator($folder, RecursiveDirectoryIterator::SKIP_DOTS),
-            RecursiveIteratorIterator::CHILD_FIRST
+        $files = new \RecursiveIteratorIterator(
+            new \RecursiveDirectoryIterator($folder, \RecursiveDirectoryIterator::SKIP_DOTS),
+            \RecursiveIteratorIterator::CHILD_FIRST
         );
 
         foreach ($files as $fileinfo) {
