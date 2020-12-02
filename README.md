@@ -35,6 +35,7 @@ Under the folder named *tests* you will find tests scripts ready to use and to e
 ## Usage
 All functions are static method callable from the following helper classes:
 * ArrayHelper
+- DateHelper
 * DebugHelper
 * DeviceHelper
 * FileHelper
