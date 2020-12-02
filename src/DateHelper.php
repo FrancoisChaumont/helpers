@@ -9,7 +9,8 @@ class DateHelper
 {
     /**
      * Calculate the time difference between UTC and specific timezone accounting for Daylight Saving Time
-     *
+     * See https://www.php.net/manual/en/timezones.php for timezone details
+     * 
      * @param string $date date to calculate time difference for
      * @param string $timezone target timezone
      * @return int|false [signed] time difference or false on failure
